@@ -1,4 +1,4 @@
-const { authSecret } = '9uj049u9lpals0';
+const { authSecret } = require('../.env');
 const jwt = require('jwt-simple');
 const bcrypt = require('bcrypt-nodejs');
 
