@@ -13,9 +13,9 @@ module.exports = app => {
             user = await app.db('users').where({ email: req.body.email }).first();
             existsOrError(user, 'Usuário não encontrado');
 
-            const isMatch = bcrypt.compareSync(req.body.password, user.password);
+            // const isMatch = bcrypt.compareSync(req.body.password, user.password);
 
-            existsOrError(isMatch, 'Senha inválida');
+            // existsOrError(isMatch, 'Senha inválida');
 
         } catch (msg) {
             return res.status(400).send(msg);
