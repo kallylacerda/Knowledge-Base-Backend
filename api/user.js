@@ -8,6 +8,11 @@ module.exports = app => {
         return bcrypt.hashSync(password, salt);
     }
 
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
     // regex para e-mail /^[a-z0-9._]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
 
     const save = async (req, res) => {
@@ -23,6 +28,7 @@ module.exports = app => {
         try {
             existsOrError(user.name, 'Nome não informado');
             existsOrError(user.email, 'E-mail não informado');
+            existsOrError(validateEmail(user.email), 'E-mail inválido');
             existsOrError(user.password, 'Senha não informada');
             existsOrError(user.confirmPassword, 'Confirmação de senha não informada');
             equalsOrError(user.password, user.confirmPassword, 'Senhas não conferem');
