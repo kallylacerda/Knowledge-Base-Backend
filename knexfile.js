@@ -20,17 +20,17 @@ module.exports = {
     development: {
         client: 'pg',
         connection: {
-            host: '127.0.0.1',
-            user: process.env.TODO_DB_USER,
-            password: process.env.TODO_DB_PW,
-            database: 'knowledge'
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PW,
+            database: process.env.DB_NAME
         },
         migrations: {
             directory: __dirname + '/migrations',
         }
     },
     production: {
-        client: 'postgresql',
+        client: 'pg',
         connection: process.env.DATABASE_URL,
         migrations: {
             directory: __dirname + '/migrations',
