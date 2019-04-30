@@ -1,5 +1,5 @@
 // Update with your config settings.
-const { db } = require('./.env');
+// const { db } = require('./.env');
 
 // module.exports = {
 //     connectionString: process.env.DATABASE_URL,
